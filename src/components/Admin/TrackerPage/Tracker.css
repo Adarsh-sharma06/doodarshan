@@ -1,0 +1,101 @@
+/* Add Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-container,
+.tracker-container {
+  background-color: #f4f4f4;
+  height: 100%;
+}
+
+/* Make status cards more visually appealing */
+.status-card {
+  flex: 1;
+  min-width: 220px;
+  padding: 25px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.status-card h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.status-card-content {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Hover effect for the action buttons in the dropdown */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Modify the map container to be more engaging */
+.vehicle-map-container {
+  margin-top: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vehicle-map {
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-placeholder {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+.map-placeholder li {
+  padding: 8px 0;
+  list-style-type: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.map-placeholder li:last-child {
+  border-bottom: none;
+}
+
+.map-placeholder h5 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.map-placeholder strong {
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .status-card {
+    min-width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .status-card {
+    min-width: 220px;
+  }
+}
