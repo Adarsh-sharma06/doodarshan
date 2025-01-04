@@ -18,7 +18,7 @@ function Dashboard() {
       heading: "Administrator",
       items: [
         { name: "Vehicles", link: "/vehicles", icon: "bi bi-truck" },
-        { name: "Users", link: "/users", icon: "bi bi-people" },
+        { name: "Users", link: "/Admin/Dashboard/CreateUser/AddUserForm", icon: "bi bi-people" },
         { name: "Driver", link: "/driver", icon: "bi bi-person-badge" },
       ],
     },

@@ -10,10 +10,7 @@ import { db, database } from "../../service/firebase"; // Ensure 'db' and 'datab
 function Tracker() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true); // Loading state for fetching data
-  const [vehicleData, setVehicleData] = useState([
-    { lat: 23.2358, lng: 72.6712, name: 'Vehicle 1', status: 'Active', lastUpdated: '2024-12-23 10:00 AM' },
-    { lat: 23.2156, lng: 72.6369, name: 'Vehicle 2', status: 'Active', lastUpdated: '2024-12-23 09:30 AM' },
-  ]);
+  const [vehicleData, setVehicleData] = useState([]); // Start with an empty array
 
   const menuSections = [
     {
@@ -64,7 +61,7 @@ function Tracker() {
         lat: vehicleData.latitude,
         lng: vehicleData.longitude,
         name: `Vehicle ${snapshot.key}`, // You can customize this depending on your structure
-        status: 'Active', // You can modify status as needed
+        status: 'Active', // Modify status as needed
         lastUpdated: new Date(vehicleData.timestamp).toLocaleString(),
       };
       setVehicleData(prevData => [...prevData, newVehicle]);

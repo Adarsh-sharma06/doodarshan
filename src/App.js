@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import Tracker from './components/Admin/TrackerPage/Tracker';
 import Dashboard from './components/Admin/Dashboard/Dashboard';
 import Report from './components/Admin/Reports/Report';
+import CreateUser from './components/Admin/Dashboard/CreateUser/AddUserForm';
 
 
 
@@ -22,8 +23,10 @@ function App() {
     <Routes>
     <Route path='/' element={<Login/>} />
     <Route path="/Admin/Dashboard" element={<Dashboard/>}/>
+    <Route path="/Admin/Dashboard/CreateUser/AddUserForm" element={<CreateUser/>}/>
     <Route path="/Admin/Tracker" element={<Tracker/>}/>
     <Route path="/Admin/Report" element={<Report/>}/>
+
 
     
     </Routes>
