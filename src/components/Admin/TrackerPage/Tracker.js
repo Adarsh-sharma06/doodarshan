@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ref, onChildAdded, onChildChanged } from "../../service/firebase"; // Realtime Database functions
+import { ref, onChildAdded, onChildChanged, get } from "firebase/database"; // Realtime Database functions
 import Sidebar from "../../ReusableComponents/Sidebar/Sidebar";
 import Navbar from "../../ReusableComponents/Navbar/Navbar";
 import MapComponent from "../../ReusableComponents/MapComponent/MapComponent";
@@ -50,9 +50,37 @@ function Tracker() {
     fetchUserData();
   }, []);
 
-  // Fetch vehicle data from Firebase Realtime Database and listen for real-time updates
+  // Fetch all vehicle data from Firebase Realtime Database initially
   useEffect(() => {
     const vehicleRef = ref(database, "/locations"); // Using Realtime Database instance
+
+    // Fetch all existing vehicles from Realtime Database
+    const fetchVehicleData = async () => {
+      try {
+        const snapshot = await get(vehicleRef); // Get all data once
+        if (snapshot.exists()) {
+          const allVehicles = [];
+          snapshot.forEach((childSnapshot) => {
+            const vehicleData = childSnapshot.val();
+            const vehicle = {
+              lat: vehicleData.latitude,
+              lng: vehicleData.longitude,
+              name: `Vehicle ${childSnapshot.key}`, // You can customize this depending on your structure
+              status: 'Active', // Modify status as needed
+              lastUpdated: new Date(vehicleData.timestamp).toLocaleString(),
+              heading: vehicleData.heading || 0, // Assuming heading (direction) data is available
+              speed: vehicleData.speed || 0,  // Include speed data
+            };
+            allVehicles.push(vehicle);
+          });
+          setVehicleData(allVehicles);
+        }
+      } catch (error) {
+        console.error("Error fetching vehicle data: ", error);
+      }
+    };
+
+    fetchVehicleData();
 
     // Listen for new data added to the "locations" node
     const onLocationAdded = onChildAdded(vehicleRef, (snapshot) => {
@@ -63,8 +91,10 @@ function Tracker() {
         name: `Vehicle ${snapshot.key}`, // You can customize this depending on your structure
         status: 'Active', // Modify status as needed
         lastUpdated: new Date(vehicleData.timestamp).toLocaleString(),
+        heading: vehicleData.heading || 180, // Assuming heading (direction) data is available
+        speed: vehicleData.speed || 0, // Include speed data
       };
-      setVehicleData(prevData => [...prevData, newVehicle]);
+      setVehicleData((prevData) => [...prevData, newVehicle]); // Add the new vehicle to the state
     });
 
     // Listen for data updates in the "locations" node (when data changes for any vehicle)
@@ -76,10 +106,12 @@ function Tracker() {
         name: `Vehicle ${snapshot.key}`,
         status: 'Active',
         lastUpdated: new Date(updatedVehicleData.timestamp).toLocaleString(),
+        heading: updatedVehicleData.heading || 180, // Ensure heading is included
+        speed: updatedVehicleData.speed || 0, // Ensure speed is included
       };
       // Update the vehicle data array with the new data
-      setVehicleData(prevData => {
-        return prevData.map(vehicle => 
+      setVehicleData((prevData) => {
+        return prevData.map((vehicle) =>
           vehicle.name === updatedVehicle.name ? updatedVehicle : vehicle
         );
       });
@@ -90,7 +122,7 @@ function Tracker() {
       onLocationAdded();
       onLocationChanged();
     };
-  }, []);
+  }, []); // Empty dependency array to run the effect once when component mounts
 
   if (loading) {
     return (
@@ -123,7 +155,7 @@ function Tracker() {
               <ul>
                 {vehicleData.map((vehicle, index) => (
                   <li key={index}>
-                    <strong>{vehicle.name}</strong> - Status: {vehicle.status} - Last updated: {vehicle.lastUpdated}
+                    <strong>{vehicle.name}</strong> - Status: {vehicle.status} - Last updated: {vehicle.lastUpdated} - Speed: {vehicle.speed} km/h - Heading: {vehicle.heading}°
                   </li>
                 ))}
               </ul>
