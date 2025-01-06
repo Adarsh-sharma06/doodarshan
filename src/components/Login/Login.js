@@ -40,7 +40,7 @@ function Login() {
         } else if (role === "Driver") {
           navigate("/DriverDashboard");
         } else if (role === "Reporter") {
-          navigate("/Reporter/RerporterDashboard"); // Fixed typo in route
+          navigate("/Reporter/ReporterDashboard"); // Fixed typo in route
         } else {
           toast.error("Unknown role");
         }

@@ -20,7 +20,7 @@ function App() {
         <Route path="/Admin/Dashboard/CreateUser" element={<AddUserForm />} />
         <Route path="/Admin/Tracker" element={<Tracker />} />
         <Route path="/Admin/Report" element={<Report />} />
-        <Route path="/Reporter/Dashboard" element={<ReporterDashboard />} /> {/* Fixed the path */}
+        <Route path="/Reporter/ReporterDashboard" element={<ReporterDashboard />} /> {/* Fixed the path */}
         <Route path="/Reporter/CarRequest" element={<CarRequest />} /> {/* Added the Car Request path */}
       </Routes>
     </Router>

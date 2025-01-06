@@ -36,7 +36,7 @@ function CarRequest() {
     {
       heading: null,
       items: [
-        { name: "Dashboard", link: "/Reporter/Dashboard", icon: "bi bi-house-door" },
+        { name: "Dashboard", link: "/Reporter/ReporterDashboard", icon: "bi bi-house-door" },
         { name: "Reports", link: "/Reporter/Reports", icon: "bi bi-file-earmark-text" },
         { name: "History", link: "/Reporter/History", icon: "bi bi-clock" },
         { name: 'Car Request', link: '/Reporter/CarRequest', icon: 'bi bi-car-front' }, // New Car Request option
