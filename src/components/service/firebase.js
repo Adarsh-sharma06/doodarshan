@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, doc, getDoc, collection, getDocs, query, where, updateDoc, deleteDoc } from 'firebase/firestore';  // Firestore
+import { getFirestore, doc, addDoc, getDoc, collection, getDocs, query, where, updateDoc, deleteDoc } from 'firebase/firestore';  // Firestore
 import { getDatabase, ref, onChildAdded, onChildChanged } from 'firebase/database'; // Realtime Database
 
 const firebaseConfig = {
@@ -25,6 +25,7 @@ const database = getDatabase(app);  // Realtime Database instance
 export {
   auth,
   db,
+  addDoc,
   database,
   signInWithEmailAndPassword,
   doc,

@@ -9,17 +9,17 @@ function Dashboard() {
     {
       heading: null,
       items: [
-        { name: "Dashboard", link: "/Admin/Dashboard", icon: "bi bi-speedometer2" },
-        { name: "Tracker", link: "/Admin/Tracker", icon: "bi bi-map" },
-        { name: "Report", link: "/Admin/Report", icon: "bi bi-bar-chart" },
+        { name: 'Dashboard', link: '/Admin/Dashboard', icon: 'bi bi-speedometer2' },
+        { name: 'Tracker', link: '/Admin/Tracker', icon: 'bi bi-map' },
+        { name: 'Report', link: '/Admin/Report', icon: 'bi bi-bar-chart' },
       ],
     },
     {
-      heading: "Administrator",
+      heading: 'Administrator',
       items: [
-        { name: "Vehicles", link: "/vehicles", icon: "bi bi-truck" },
-        { name: "Users", link: "/Admin/Dashboard/CreateUser/AddUserForm", icon: "bi bi-people" },
-        { name: "Driver", link: "/driver", icon: "bi bi-person-badge" },
+        { name: 'Vehicles', link: '/vehicles', icon: 'bi bi-truck' },
+        { name: 'Users', link: '/Admin/Dashboard/CreateUser', icon: 'bi bi-people' },  // Updated link
+        { name: 'Driver', link: '/driver', icon: 'bi bi-person-badge' },
       ],
     },
   ];
