@@ -125,7 +125,8 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <Sidebar logoSrc="/images/DD.png" logoText="Doordarshan" menuSections={menuSections} />
+      <Sidebar logoSrc="/images/DD.png" logoText="Doordarshan" menuSections={menuSections}
+            showLogout={true} />
 
       <div className="content-container">
         <Navbar
