@@ -1,0 +1,14 @@
+/* Reporter.css */
+.reporter-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .content-container {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f6f9;
+  }
+  .reporter-main{
+    margin-left: 16%;
+  }
